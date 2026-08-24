@@ -4,8 +4,6 @@ Tutorial 6: Test Code in Scale & Fix with Debugger
 
 In this tutorial you will practise writing unit tests with Python's `unittest` framework. For each case, study the given module, write tests that cover the stated rules, and use your tests to check whether the implementation is correct. If your tests reveal incorrect behaviour, fix the code.
 
-The Expected Solution is in `Expected_Solution.png`
-
 ---
 
 ## Task 1: Password Validator
@@ -73,3 +71,9 @@ Write unit tests for `ParkingFeeCalculator` in `parking_fee.py`.
 | 9 | $80.00 |
 | 26 | $90.00 |
 
+---
+
+## Expected Results
+
+
+![Expected Result](expected_results.png)

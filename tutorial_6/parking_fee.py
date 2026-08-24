@@ -14,11 +14,11 @@ class ParkingFeeCalculator:
         - Fee is capped at DAILY_MAX per 24-hour period.
         - Returns fee rounded to 2 decimal places, or None if invalid.
         """
-        if not isinstance(hours, (int, float)):
+        if not isinstance(hours, (int, float)) or isinstance(hours, bool):
             print("Hours must be a number.")
             return None
 
-        if hours < 0:
+        if hours <= 0:
             print("Hours must be greater than zero.")
             return None
 
@@ -29,11 +29,11 @@ class ParkingFeeCalculator:
 
     def _fee_for_period(self, hours):
         """Calculates fee for a single period up to 24 hours."""
-        if hours < 1:
+        if hours <= 1:
             return 0.0
 
-        billable_hours = math.ceil(hours)
-        return billable_hours * self.HOURLY_RATE
+        billable_hours = math.ceil(hours - 1)
+        return min(billable_hours * self.HOURLY_RATE, self.DAILY_MAX)
 
 
 if __name__ == '__main__':
