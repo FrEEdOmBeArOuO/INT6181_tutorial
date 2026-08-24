@@ -1,0 +1,5 @@
+**/__pycache__/
+**/.vscode/
+test_parking_fee_teacher.py
+test_triangle_teacher.py
+test_password_validator_teacher.py
