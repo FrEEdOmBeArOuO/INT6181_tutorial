@@ -1,79 +1,50 @@
-# INT6181_tutorial_6
+# INT6181 Tutorial 7
 
-Tutorial 6: Test Code in Scale & Fix with Debugger
+Tutorial 7: Automate Tests with GitHub Actions
 
-In this tutorial you will practise writing unit tests with Python's `unittest` framework. For each case, study the given module, write tests that cover the stated rules, and use your tests to check whether the implementation is correct. If your tests reveal incorrect behaviour, fix the code.
+In this tutorial you will set up a GitHub Actions workflow so the provided teacher tests run automatically on every pull request.
 
----
-
-## Task 1: Password Validator
-
-Write unit tests for `validate_password` in `password_validator.py`.
-
-### Specification
-
-The function must return `True` only when all of the following hold:
-
-1. The input is a string (`str`).
-2. The length is between **8 and 20** characters (inclusive).
-3. The password contains no whitespace (spaces, tabs, or newlines).
-4. The password contains at least:
-   - one uppercase letter (`A-Z`)
-   - one lowercase letter (`a-z`)
-   - one digit (`0-9`)
-   - one special character (any non-alphanumeric character)
-
-Otherwise it must return `False`.
-
+The modules under `tutorial_7` (`password_validator.py`, `triangle.py`, `parking_fee.py`) and all `test_*` test files are already provided in this repository on GitHub. Your job is to configure CI so those tests run in the GitHub cloud.
 
 ---
 
-## Task 2: Triangle Validator
+## Task: Set Up GitHub Actions
 
-Write unit tests for the `Triangle` in `triangle.py`.
+Set up GitHub Actions so the provided tests run automatically on pull requests.
 
-### Specification
+1. Open your repository in VS Code. Create the workflow at the **repository root** (the folder that contains both `tutorial_6` and `tutorial_7`). 
 
-Given three side lengths `a`, `b`, and `c`:
+   ![Step 1.1](src/Step1_1.png)
 
-1. **Validity** (`is_valid`):
-   - All sides must be numbers (`int` or `float`, not `bool`).
-   - All sides must be strictly greater than zero.
-   - Triangle inequality must hold: \(a + b > c\), \(a + c > b\), \(b + c > a\).
-2. **Type** (`get_type`): for a valid triangle, return Equilateral, Isosceles, or Scalene; otherwise return `None`.
-3. **Area** (`get_area`): for a valid triangle, compute area with Heron's formula and round to **4** decimal places; otherwise return `None`.
+   ![Step 1.2](src/Step1_2.png)
 
+2. Create a hidden folder named `.github`. Inside it, create another folder named `workflows`. Your workflow files must live under `.github/workflows/`.
+3. In `workflows`, create a new YAML file.
 
----
+   ![Step 3](src/Step3.png)
 
-## Task 3: Parking Fee Calculator
+4. Configure the YAML file.
+5. Commit and push the workflow YAML (under `.github/workflows/`) to GitHub on your own branch.
+6. Save the workflow file. Then make a small change under `tutorial_7` (for example, edit a print statement in one of the modules) so you have something to put on a pull request. Commit and push everything to GitHub on your own branch.
 
-Write unit tests for `ParkingFeeCalculator` in `parking_fee.py`.
+   ![Step 6.1](src/Step6_1.png)
 
-### Specification
+   ![Step 6.2](src/Step6_2.png)
 
-`calculate_fee(hours)` must follow these rules:
+   ![Step 6.3](src/Step6_3.png)
 
-1. Hours must be a positive number (`int` or `float`, not `bool`). Invalid input returns `None`.
-2. The **first hour is free**.
-3. Each additional hour (including partial hours) is charged at **$10.00/hr**, with partial hours rounded **up**.
-4. Fee for any 24-hour period is capped at **$80.00**.
-5. For parking longer than 24 hours: charge the daily cap for each full day, plus the fee for the remaining hours.
-6. Return the fee rounded to **2** decimal places.
+7. On GitHub, open a **pull request** from your branch into the target branch (for example `dev` or `main`).
 
-### Fee examples
+   ![Step 7.1](src/Step7_1.png)
 
-| Hours | Fee |
-|-------|-----|
-| 1 | $0.00 |
-| 1.5 | $10.00 |
-| 2 | $10.00 |
-| 9 | $80.00 |
-| 26 | $90.00 |
+   ![Step 7.2](src/Step7_2.png)
+
+When this task is done correctly, every future pull request should automatically re-run the tests.
 
 ---
 
 ## Expected Results
 
+You should see a successful **Run Test** workflow run on the pull request (green check), with all tests passing:
 
-![Expected Result](expected_results.png)
+![Expected Result](src/expected_result.png)

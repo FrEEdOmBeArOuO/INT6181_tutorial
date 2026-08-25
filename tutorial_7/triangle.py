@@ -75,4 +75,4 @@ if __name__ == '__main__':
         else:
             print("Invalid triangle parameters.")
     except ValueError:
-        print("Invalid input! Please enter numeric values.")
+        print("Invalid input! Please enter numeric values!")
