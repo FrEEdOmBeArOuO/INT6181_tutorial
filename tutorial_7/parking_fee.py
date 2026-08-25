@@ -48,4 +48,4 @@ if __name__ == '__main__':
         if fee is not None:
             print(f"Parking fee for {hours} hour(s): ${fee:.2f}")
         else:
-            print("Invalid parking hours.")
+            print("Invalid parking hours!")
