@@ -3,3 +3,6 @@
 test_parking_fee_teacher.py
 test_triangle_teacher.py
 test_password_validator_teacher.py
+!tutorial_7/test_parking_fee_teacher.py
+!tutorial_7/test_triangle_teacher.py
+!tutorial_7/test_password_validator_teacher.py
