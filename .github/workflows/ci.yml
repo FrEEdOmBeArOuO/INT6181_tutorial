@@ -1,4 +1,4 @@
-name: CI
+name: Run Test
 
 on:
   push:
@@ -13,8 +13,10 @@ jobs:
       run:
         working-directory: tutorial_7
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: CheckOut Your Code
+        uses: actions/checkout@v4
+      - name: Set Up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Run teacher tests
