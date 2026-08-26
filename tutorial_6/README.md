@@ -1,4 +1,4 @@
-# INT6181_tutorial_6
+# INT6181 Tutorial 6
 
 Tutorial 6: Test Code in Scale & Fix with Debugger
 
