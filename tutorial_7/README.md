@@ -4,47 +4,28 @@ Tutorial 7: Automate Tests with GitHub Actions
 
 In this tutorial you will set up a GitHub Actions workflow so the provided teacher tests run automatically on every pull request.
 
-The modules under `tutorial_7` (`password_validator.py`, `triangle.py`, `parking_fee.py`) and all `test_*` test files are already provided in this repository on GitHub. Your job is to configure CI so those tests run in the GitHub cloud.
+The modules under `tutorial_7` (`password_validator.py`, `triangle.py`, `parking_fee.py`) and all `test_*` teacher test files are already provided in this repository on GitHub.
 
 ---
 
 ## Task: Set Up GitHub Actions
 
-Set up GitHub Actions so the provided tests run automatically on pull requests.
+Create a GitHub Actions workflow that runs the provided teacher tests on pull requests.
 
-1. Open your repository in VS Code. Create the workflow at the **repository root** (the folder that contains both `tutorial_6` and `tutorial_7`). 
+### Specification
 
-   ![Step 1.1](src/Step1_1.png)
-
-   ![Step 1.2](src/Step1_2.png)
-
-2. Create a hidden folder named `.github`. Inside it, create another folder named `workflows`. Your workflow files must live under `.github/workflows/`.
-3. In `workflows`, create a new YAML file.
-
-   ![Step 3](src/Step3.png)
-
-4. Configure the YAML file.
-5. Commit and push the workflow YAML (under `.github/workflows/`) to GitHub on your own branch.
-6. Save the workflow file. Then make a small change under `tutorial_7` (for example, edit a print statement in one of the modules) so you have something to put on a pull request. Commit and push everything to GitHub on your own branch.
-
-   ![Step 6.1](src/Step6_1.png)
-
-   ![Step 6.2](src/Step6_2.png)
-
-   ![Step 6.3](src/Step6_3.png)
-
-7. On GitHub, open a **pull request** from your branch into the target branch (for example `dev` or `main`).
-
-   ![Step 7.1](src/Step7_1.png)
-
-   ![Step 7.2](src/Step7_2.png)
-
-When this task is done correctly, every future pull request should automatically re-run the tests.
+1. Place the workflow under `.github/workflows/` at the **repository root** (the folder that contains both `tutorial_6` and `tutorial_7`), not inside `tutorial_7`.
+2. The workflow must trigger on `pull_request` events.
+3. Define a single job that runs on the latest Ubuntu runner.
+4. Set the jobs default working directory to `tutorial_7`.
+5. The job must:
+  - Check out the repository code.
+  - Set up Python version 3.12.
+  - Run the provided unit tests with Python `unittest` discovery, matching files named like `test_*.py`.
+6. Commit and push your workflow, make a small change under `tutorial_7`, then open a **pull request** so the workflow runs and all tests pass.
 
 ---
 
 ## Expected Results
 
-You should see a successful **Run Test** workflow run on the pull request (green check), with all tests passing:
-
-![Expected Result](src/expected_result.png)
+![Expected Result](expected_results.png)
